@@ -44,21 +44,22 @@ class test_04_00_checkparameter(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         common_init.setUpClass()
-        logging.basicConfig(filename='../logs/' + __name__ + '.log',
-                            format='[%(asctime)s-%(filename)s-%(levelname)s:%(message)s]',
-                            level=logging.DEBUG, filemode='a',
-                            datefmt='%Y-%m-%d%I:%M:%S %p')
-
+        logging.basicConfig(
+            filename='../logs/' + __name__ + '.log',
+            format='[%(asctime)s-%(filename)s-%(levelname)s:%(message)s]',
+            level=logging.DEBUG,
+            filemode='a',
+            datefmt='%Y-%m-%d%I:%M:%S %p')
 
     @unittest.skipIf(0 > case_level, "过滤leve0用例.")
     @unittest.skipIf(filter_env == "prod", "过滤leve0用例.")
-    #@timeout_decorator.timeout(seconds=time_out)
+    # @timeout_decorator.timeout(seconds=time_out)
     @ddt.data(*test_data.testdata_level_0)
     def test_parameter_0(self, dict):
         """参数化
         """
         logging.debug("123")
-        #time.sleep(5)
+        # time.sleep(5)
         print(dict.get("testcase"))
         print(baidu_url)
         self.assertEqual(dict.get("input_iphone"), dict.get("verfy_iphone"))
